@@ -13,3 +13,4 @@ To change the content, edit `index.html` and push. GitHub Pages updates the site
 - `index.html`: the portfolio
 - `privacy.html` and `terms.html`: privacy policy and terms for this site and my free apps (ZSL Translator, LubaVoice AI)
 - `mineready/`: the MineReady landing page with its own privacy policy and terms
+- `mineready/app/`: the MineReady web app (v1.0.1). Works in any browser, keeps records on the device and works offline. To update, rebuild it and replace this folder.

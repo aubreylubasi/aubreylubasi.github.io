@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How I Built MineReady Zambia | Aubrey Lubasi</title>
+<meta name="description" content="How Aubrey Lubasi built MineReady, a document readiness app for Zambian mine contractors, after seeing workers turned away at mine gates over expired papers.">
+<meta name="author" content="Aubrey Lubasi">
+<link rel="canonical" href="https://aubreylubasi.dev/blog/how-i-built-mineready.html">
+<meta property="og:title" content="How I Built MineReady Zambia">
+<meta property="og:description" content="A document readiness app for Zambian mine contractors: the problem, what I built, and what I learned.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aubreylubasi.dev/blog/how-i-built-mineready.html">
+<meta name="theme-color" content="#13261C">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2313261C'/><text x='16' y='22' font-family='Arial,Helvetica,sans-serif' font-size='15' font-weight='700' fill='%23F1F4EF' text-anchor='middle'>AL</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"How I Built MineReady Zambia","datePublished":"2026-11-27","author":{"@type":"Person","name":"Aubrey Lubasi","url":"https://aubreylubasi.dev"},"mainEntityOfPage":"https://aubreylubasi.dev/blog/how-i-built-mineready.html"}
+</script>
+<style>
+  :root { --paper:#F1F4EF; --ink:#13261C; --green:#1E6B3E; --muted:#536559; --line:#CBD6CE; --orange:#F08A24; --sans:"Archivo","Helvetica Neue",Arial,sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:1.0625rem; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  a { color:var(--green); text-underline-offset:0.2em; text-decoration-thickness:1px; }
+  a:hover { text-decoration-thickness:2px; }
+  :focus-visible { outline:3px solid var(--orange); outline-offset:3px; border-radius:2px; }
+  .wrap { width:min(40rem, 100% - 3rem); margin-inline:auto; }
+  .top { padding:1.25rem 0; }
+  .top .wrap { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap; width:min(72rem, 100% - 3rem); }
+  .top a { color:var(--ink); text-decoration:none; }
+  .top .home { font-weight:700; font-stretch:112%; }
+  .top a:hover { text-decoration:underline; }
+  header.post { padding:clamp(2rem,6vw,4rem) 0 1.5rem; }
+  h1 { margin:0 0 1rem; font-size:clamp(2.3rem,7vw,3.6rem); font-weight:800; font-stretch:118%; line-height:0.98; letter-spacing:-0.02em; }
+  .meta { color:var(--muted); font-size:0.95rem; margin:0; }
+  h2 { margin:2.5rem 0 0.6rem; font-size:1.45rem; font-weight:700; font-stretch:112%; line-height:1.2; }
+  p, ul { margin:0 0 1rem; }
+  ul { padding-left:1.2rem; }
+  li { margin-bottom:0.35rem; }
+  .lead { font-size:1.2rem; }
+  .cta { margin:2.5rem 0 0; padding:1.25rem 0 0; border-top:1px solid var(--line); }
+  footer { margin-top:3rem; padding:2rem 0 3rem; color:var(--muted); font-size:0.9rem; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="home" href="/">Aubrey Lubasi</a>
+    <a href="/mineready/">MineReady</a>
+  </div>
+</div>
+
+<main class="wrap">
+  <header class="post">
+    <h1>How I Built MineReady Zambia</h1>
+    <p class="meta">By Aubrey Lubasi · Ndola, Zambia · 27 November 2026</p>
+  </header>
+
+  <p class="lead">A contractor can have the right people, the right equipment and a signed job, and still lose a day at the mine gate because one worker's medical expired last week. MineReady is my attempt to stop that.</p>
+
+  <h2>The problem</h2>
+  <p>Before a contractor's crew is allowed on a mine site, the mine checks paperwork. For the company that means things like the PACRA certificate, ZRA tax clearance, NAPSA and insurance. For each worker it means a valid medical, a site induction for that particular mine, and the training certificates their job needs.</p>
+  <p>Most small and mid-sized contractors keep track of this in folders, spreadsheets and WhatsApp chats. Expiry dates are easy to miss. When one is missed, the worker is turned away, the job is delayed, and someone has to rush around getting a document renewed that could have been renewed a month earlier.</p>
+
+  <h2>Where I started, and why I changed direction</h2>
+  <p>My first version of MineReady was a safety and incident reporting app for mines: workers report hazards from their phones and safety officers manage the cases. It worked, but it was built for the mine's safety department, and getting a mine to change how its own safety team works is a long road for a student.</p>
+  <p>The more I looked at how contractors actually get onto sites, the clearer it became that the paperwork was the daily pain, and that it belonged to the contractor, not the mine. So I rebuilt MineReady around one question: is this worker cleared for this mine today, and if not, why not?</p>
+
+  <h2>What MineReady does</h2>
+  <ul>
+    <li>Keeps company documents and every worker's medicals, inductions and certificates in one place, each with its reference number, dates and a photo or PDF of the actual document.</li>
+    <li>Lets each mine have its own list of required documents, so a worker can be cleared for one site and not another.</li>
+    <li>Shows a dashboard of who is cleared, who is blocked, and which documents need attention first.</li>
+    <li>Warns before anything expires and can open WhatsApp with a reminder ready to send to the worker.</li>
+    <li>Builds the contractor file a mine asks for as a single PDF on the phone: a cover page, an index with the status of every document, and a copy of each one.</li>
+  </ul>
+
+  <h2>Decisions that mattered</h2>
+  <p><strong>One rule for "cleared".</strong> The dashboard, worker profiles, filters, PDF and CSV export all use the same calculation. If they disagreed even once, nobody would trust the app at the gate.</p>
+  <p><strong>No proof, no clearance.</strong> A document with no copy attached or no expiry date is marked Incomplete, and the worker is not cleared. Typing in a date is not the same as having the paper.</p>
+  <p><strong>Explain the "no".</strong> Every blocked worker has a short list of exactly which documents are the problem and a button to fix each one.</p>
+  <p><strong>Works where the network doesn't.</strong> Mine sites often have poor signal, so the web app works offline once opened, and there is an Android app as well.</p>
+
+  <h2>Security and privacy</h2>
+  <p>I'm a final-year cyber security student, and worker medicals and ID details are sensitive, so this part was not optional.</p>
+  <ul>
+    <li>The web version has no server. Records stay in the browser on the device unless the user shares a file.</li>
+    <li>The page is locked down so it makes no requests to other websites: no trackers, no outside scripts, fonts served from the same site.</li>
+    <li>Photos are re-encoded on the device, which removes hidden location data from camera pictures.</li>
+    <li>User text is never inserted as HTML, inputs are checked again when read back, and CSV exports are protected against spreadsheet formula injection.</li>
+  </ul>
+
+  <h2>How I tested it</h2>
+  <p>I wrote an automated test suite that runs the app in a headless browser at phone and laptop sizes with all outside network access blocked. It checks clearance rules, filters, the PDF and CSV exports, offline reloads, and that saved records survive an upgrade from the previous version.</p>
+
+  <h2>What's next</h2>
+  <p>I'm showing MineReady to contractors on the Copperbelt and offering a free pilot. The next features come from those conversations: company accounts with several users, an activity history, email and SMS reminders, hosting options, and full compliance with Zambia's Data Protection Act No. 3 of 2021.</p>
+
+  <div class="cta">
+    <p>You can try MineReady with fictional sample data at <a href="https://mineready.aubreylubasi.dev">mineready.aubreylubasi.dev</a>. If you run a contracting company and want to try it with your team, email me at <a href="mailto:aubrey@aubreylubasi.dev">aubrey@aubreylubasi.dev</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Aubrey Lubasi · <a href="/privacy.html">Privacy policy</a> · <a href="/terms.html">Terms of use</a></div>
+</footer>
+
+</body>
+</html>
